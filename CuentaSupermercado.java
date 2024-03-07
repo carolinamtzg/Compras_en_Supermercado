@@ -4,18 +4,19 @@ import java.util.List;
 /*
 Funcionalidades de la Clase CuentaSupermercado:
 
-Añadir productos a la cuenta. Si el producto ya existe, se deberán sumar las unidades.
-Calcular el precio total de la compra, teniendo en cuenta la cantidad de cada producto.
-Mostrar el tiquet segun se indica más abajo.
+- Añadir productos a la cuenta.
+- Si el producto ya existe, se deberán sumar las unidades.
+- Calcular el precio total de la compra, teniendo en cuenta la cantidad de cada producto.
+- Mostrar el ticket segun se indica.
  */
 
 public class CuentaSupermercado {
-  private List<ProductoFactura> listaProductoFactura;
-  private static int contadorFacturas = 1; // contador de facturas
+  private List<ProductoFactura> listaProductoFactura; 
+  private static int contadorFacturas = 1; // contador de facturas para incluir el # en el ticket.
   private String nombre;
   private int numeroFactura;
 
-  //Constructor:
+  // constructor:
   public CuentaSupermercado(){
     this.numeroFactura = contadorFacturas++;
     this.listaProductoFactura = new ArrayList<ProductoFactura>();
@@ -28,14 +29,13 @@ public class CuentaSupermercado {
   }
 
   // metodos setters:
-
   public void setNombre(String nombre){
     this.nombre = nombre;
   }
 
   // Metodos:
 
-  // método para añadir productos a la cuenta:
+  // metodo para añadir productos a la cuenta:
   public void addProducto(Producto productoInput, int unidades){
     boolean productoExistente = false;
 
@@ -55,7 +55,7 @@ public class CuentaSupermercado {
     }
   }
 
-  // método para calcular el precio total de la compra:
+  // metodo para calcular el precio total de la compra:
   public double calcularPrecioTotal() {
     double precioTotal = 0;
     for (ProductoFactura productoFactura : listaProductoFactura) {
@@ -71,7 +71,7 @@ public class CuentaSupermercado {
     return numeroFactura;
   }
 
-    // metodo para imprimir factura:
+  // metodo para imprimir el ticket:
   public String mostrarCuenta(){
 
     StringBuilder sb = new StringBuilder();
@@ -83,20 +83,20 @@ public class CuentaSupermercado {
     sb.append("Producto\t" + "Un.\t" + "\tPU\t" + "\tTotal\t\n");
     sb.append("---------------------------------------------------------------\n");
 
-    double totalFactura = 0;
+    double totalFactura = 0; // calcular el total dentro del loop
 
     // iterar sobre la lista de productos: el print incluye unidades + precioUnitario + precioTotal:
     for (ProductoFactura productoFactura : listaProductoFactura) {
       Producto producto = productoFactura.getProducto();
 
-      // Agregar la línea para cada producto
+      // agregar la línea para cada producto:
       sb.append(String.format("%s\t\t%d\t\t%.1f\t\t%.1f\n",
                               producto.getNombre(),
                               productoFactura.getCantidad(),
                               producto.getPrecioUnitario(),
                               producto.getPrecioUnitario() * productoFactura.getCantidad())); //calcular el precio x cant total
 
-      // Actualizar el total de la factura
+      // actualizar el total de la factura:
       totalFactura += producto.getPrecioUnitario() * productoFactura.getCantidad();
     }
     sb.append("---------------------------------------------------------------\n");

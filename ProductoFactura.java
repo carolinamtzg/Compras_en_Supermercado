@@ -1,13 +1,10 @@
 /*
-Funcionalidades de la Clase Producto:
+Funcionalidades de la Clase ProductoFactura:
 
-Almacenar el nombre del producto, el precio unitario.
-Proveer métodos para obtener y modificar estas propiedades (getters y setters).
-
-Definir la Clase Producto:
-Debe contener dos propiedades privadas: nombre (String) y precioUnitario (double).
-Implementar un constructor para inicializar estas propiedades.
-Proporcionar métodos getters y setters para cada propiedad.
+- Almacenar el producto y la cantidad (unidades de producto).
+- Proveer métodos para obtener y modificar estas propiedades (getters y setters).
+- Implementar un constructor para inicializar estas propiedades.
+- Proporcionar método para incrementar las unidades.
 
  */
 public class ProductoFactura {
@@ -31,7 +28,7 @@ public class ProductoFactura {
     return cantidad;
   }
 
-  // metodos setter:
+  // metodo:
   public void incrementarCantidad(int cantidad){
     this.cantidad += cantidad;
   }

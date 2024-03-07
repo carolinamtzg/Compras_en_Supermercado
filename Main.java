@@ -4,11 +4,10 @@ import java.util.Scanner;
 En el método main:
 Se crearán varios productos y se añadirán a la cuenta del supermercado para mostrar la funcionalidad.
 La introducción de productos se hará
-1. Preguntar numero total de productos. Crear array de productos con longitud informada.
-2. Preguntar producto y cantidad.
-3. Confirmar si hay otro producto.
-4. Acabar si no hay mas productos.
-Al acabar de introducir productos, el programa mostrará la cuenta según el esquema.
+1. Preguntar producto y cantidad.
+2. Confirmar si hay otro producto.
+3. Acabar si no hay mas productos.
+4. Al acabar de introducir productos, el programa mostrará la cuenta.
 */
 
 public class Main {
@@ -48,7 +47,7 @@ public class Main {
         nuevaFactura.addProducto(producto, cantProducto);
 
         System.out.print("¿Desea agregar otro producto? (Y/N): ");
-        respuestaAddProducto = scanner.next();
+        respuestaAddProducto = scanner.next().toUpperCase();
         scanner.nextLine();
       }
 
@@ -57,7 +56,7 @@ public class Main {
       System.out.println(cuenta);
 
       System.out.print("¿Desea agregar una cuenta nueva? (Y/N): ");
-      respuestaNuevaFactura = scanner.next();
+      respuestaNuevaFactura = scanner.next().toUpperCase();
 
     }
     

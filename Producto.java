@@ -1,13 +1,9 @@
 /*
 Funcionalidades de la Clase Producto:
 
-Almacenar el nombre del producto, el precio unitario.
-Proveer métodos para obtener y modificar estas propiedades (getters y setters).
-
-Definir la Clase Producto:
-Debe contener dos propiedades privadas: nombre (String) y precioUnitario (double).
-Implementar un constructor para inicializar estas propiedades.
-Proporcionar métodos getters y setters para cada propiedad.
+- Almacenar el nombre del producto y el precio unitario.
+- Implementar un constructor para inicializar estas propiedades.
+- Métodos para obtener y modificar estas propiedades (getters y setters).
 
  */
 public class Producto {
