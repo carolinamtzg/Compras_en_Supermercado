@@ -16,38 +16,46 @@ public class Main {
 
   public static void main(String[] args){
 
-    // preguntar numero total de productos:
-    System.out.println("Ingresa el numero total de productos: ");
-    int totalProductos = scanner.nextInt();
-    scanner.nextLine();
+    String respuestaNuevaFactura = "Y";
 
-    // crear array de productos con longitud informada:
-    Producto[] productos = new Producto[totalProductos];
-    
-    for(int i = 0; i > totalProductos; i++){
+    while(respuestaNuevaFactura.equals("Y")){
+      // Por la manera implementada, no se necesita preguntar numero de productos.
 
-      System.out.print("Ingrese la cantidad del producto: ");
-      int unidades = scanner.nextInt();
-      scanner.nextLine();
+      CuentaSupermercado nuevaFactura = new CuentaSupermercado();
 
-      // crear el producto y añadirlo al array:
-      productos[i] = new Producto(nombreProducto, 10); //producto.getPrecioUnitario()?
-      productos[i].addUnidades(unidades); //producto.getUnidades()?
+      String respuestaAddProducto = "Y";
+      
+      // while loop para seguir añadiendo productos en la lista:
+      while(respuestaAddProducto.equals("Y")){
 
-      System.out.print("¿Desea agregar otro producto? (Y/N): ");
-      String respuesta = scanner.nextLine().toLowerCase();
-      if(respuesta.equals("y")){
-        break;
+        // preguntar nombre del producto:
+        System.out.print("Nombre del producto: ");
+        String nombreProducto = scanner.next();
+
+        // preguntar precio de productos:
+        System.out.print("Precio: ");
+        double precioUnitario = scanner.nextDouble();
+        scanner.nextLine();
+
+        Producto producto = new Producto(nombreProducto, precioUnitario);
+
+        // preguntar cantidad de productos:
+        System.out.print("Cantidad: ");
+        int cantProducto = scanner.nextInt();
+        scanner.nextLine();
+
+        // guardar las unidades del producto:
+        nuevaFactura.addProducto(producto, cantProducto);
+
+        System.out.print("¿Desea agregar otro producto? (Y/N): ");
+        respuestaAddProducto = scanner.next();
+        scanner.nextLine();
       }
+      // imprimir la nueva factura para comprobar que el sistema funciona correctamente:
+      String cuenta = nuevaFactura.mostrarCuenta();
+      System.out.println(cuenta);
+      respuestaAddProducto = scanner.next();
     }
-
-    CuentaSupermercado cuenta = new CuentaSupermercado();
-    for(Producto producto : productos){
-      cuenta.addProducto(producto, producto.getUnidades());
-    }
-
-    cuenta.mostrarCuenta();
-
-    scanner.close();
   }
 }
+

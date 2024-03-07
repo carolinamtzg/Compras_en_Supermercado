@@ -10,33 +10,29 @@ Implementar un constructor para inicializar estas propiedades.
 Proporcionar métodos getters y setters para cada propiedad.
 
  */
-public class Producto {
+public class ProductoFactura {
   // atributos:
-  private String nombre;
-  private double precioUnitario;
+  private Producto producto;
+  private int cantidad;
   
 
   // constructor:
-  public Producto(String nombre, double precioUnitario){
-    this.nombre = nombre;
-    this.precioUnitario = precioUnitario;
+  public ProductoFactura(Producto producto, int cantidad){
+    this.producto = producto;
+    this.cantidad = cantidad;
   }
 
   // metodos getters:
-  public String getNombre(){
-    return nombre;
+  public Producto getProducto(){
+    return producto;
   }
 
-  public double getPrecioUnitario(){
-    return precioUnitario;
+  public int getCantidad(){
+    return cantidad;
   }
 
   // metodos setter:
-  public void setNombre(String nombre){
-    this.nombre = nombre;
-  }
-
-  public void setPrecioUnitario(double precioUnitario){
-    this.precioUnitario = precioUnitario;
+  public void incrementarCantidad(int cantidad){
+    this.cantidad += cantidad;
   }
 }
