@@ -76,23 +76,32 @@ public class CuentaSupermercado {
 
     StringBuilder sb = new StringBuilder();
 
-    sb.append("\t 1\t   2\t    3\t   4\t    5\t    6\t    7\t    8\t\n");
+    sb.append("\t 1\t   2\t     3\t       4\t 5\t   6\t     7\t\n");
     sb.append("1234567890123456789012345678901234567890123456789012345678901234567890\n");
     sb.append("\n");
     sb.append(String.format("TICKET: %d\n", getNumeroFactura()));
     sb.append("Producto\t" + "Un.\t" + "\tPU\t" + "\tTotal\t\n");
     sb.append("---------------------------------------------------------------\n");
-    // productos + unidades + precioUnitario + precioTotal
+
+    double totalFactura = 0;
+
+    // iterar sobre la lista de productos: el print incluye unidades + precioUnitario + precioTotal:
     for (ProductoFactura productoFactura : listaProductoFactura) {
       Producto producto = productoFactura.getProducto();
+
+      // Agregar la línea para cada producto
       sb.append(String.format("%s\t\t%d\t\t%.1f\t\t%.1f\n",
                               producto.getNombre(),
                               productoFactura.getCantidad(),
                               producto.getPrecioUnitario(),
-                              calcularPrecioTotal())); //falta el precio total por unidad!!
-      sb.append("---------------------------------------------------------------\n");
-      sb.append(String.format("Total:\t\t\t\t\t\t%.1f", calcularPrecioTotal()));
+                              producto.getPrecioUnitario() * productoFactura.getCantidad())); //calcular el precio x cant total
+
+      // Actualizar el total de la factura
+      totalFactura += producto.getPrecioUnitario() * productoFactura.getCantidad();
     }
+    sb.append("---------------------------------------------------------------\n");
+    sb.append(String.format("Total:\t\t\t\t\t\t%.1f\n", totalFactura));
+
     return sb.toString();
   }
 }

@@ -51,11 +51,17 @@ public class Main {
         respuestaAddProducto = scanner.next();
         scanner.nextLine();
       }
+
       // imprimir la nueva factura para comprobar que el sistema funciona correctamente:
       String cuenta = nuevaFactura.mostrarCuenta();
       System.out.println(cuenta);
-      respuestaAddProducto = scanner.next();
+
+      System.out.print("¿Desea agregar una cuenta nueva? (Y/N): ");
+      respuestaNuevaFactura = scanner.next();
+
     }
+    
+
   }
 }
 
